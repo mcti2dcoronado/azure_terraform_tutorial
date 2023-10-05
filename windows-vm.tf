@@ -8,7 +8,7 @@ resource "azurerm_virtual_network" "mynet" {
 resource "azurerm_subnet" "sbnet-mcti" {
   name                 = "internal"
   resource_group_name  = azurerm_resource_group.azureresourcegroup.name
-  virtual_network_name = azurerm_virtual_network.azureresourcegroup.name
+  virtual_network_name = azurerm_virtual_network.mynet.name
   address_prefixes     = ["10.0.2.0/24"]
 }
 
