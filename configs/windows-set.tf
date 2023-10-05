@@ -1,0 +1,9 @@
+windows:
+  - name: 'mywindowsvm'
+    size: 'Standard_F2'
+    caching: 'ReadWrite'
+    storage_account_type: 'Standard_LRS'
+    publisher: 'MicrosoftWindowsServer'
+    offer: 'WindowsServer'
+    sku:  '2016-Datacenter'
+    version: 'latest'

@@ -9,6 +9,8 @@ locals{
       }
     ]
 ])
+
+  windows_vm = yamldecode(file("${path.module}/configs/windows-set.yaml"))
 }
 
 

@@ -25,10 +25,11 @@ resource "azurerm_network_interface" "mynic" {
 }
 
 resource "azurerm_windows_virtual_machine" "myvm" {
-  name                = "mywindowsvm"
+  for_each 	      = local.windows_vm
+  name                = each.key
   resource_group_name = azurerm_resource_group.azureresourcegroup.name
   location            = azurerm_resource_group.azureresourcegroup.location
-  size                = "Standard_F2"
+  size                = each.value.size
   admin_username      = var.admin_username
   admin_password      = var.admin_password
   network_interface_ids = [
@@ -36,15 +37,15 @@ resource "azurerm_windows_virtual_machine" "myvm" {
   ]
 
   os_disk {
-    caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
+    caching              = each.value.caching
+    storage_account_type = each.value.storage_account_type
   }
   
   source_image_reference {
-    publisher = "MicrosoftWindowsServer"
-    offer     = "WindowsServer"
-    sku       = "2016-Datacenter"
-    version   = "latest"
+    publisher = each.value.publisher
+    offer     = each.value.offer
+    sku       = each.value.sku
+    version   = each.value.version
   }
 
 }
