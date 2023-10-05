@@ -1,5 +1,6 @@
+---
 windows:
-  - name: 'mywindowsvm'
+  "mywindowsvm":
     size: 'Standard_F2'
     caching: 'ReadWrite'
     storage_account_type: 'Standard_LRS'
